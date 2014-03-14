@@ -82,31 +82,34 @@ motf.deployOffline = function() {
 
 ///////////// GO TO //////////////
 motf.goToPage = function(pageid) {
+	var pageidForMenu;
 	if (_.contains(self.pageNoFooter, pageid)) {
 		$('footer').hide();
 	} else if (_.contains(self.pageFooterNoChange, pageid)) {
 		// do nothing
 	} else {
 		if(pageid == 'pMapAfterUGC' || pageid == 'pMapAfterUGCPoetDetail') {
-			pageid = 'pMap';
+			pageidForMenu = 'pMap';
+		} else {
+			pageidForMenu = pageid;
 		}
 		$('footer').show();
 		// RESET ICON
 		$('.footerIcon').css({
 			'-webkit-filter': 'invert(100%)'
 		});
-		$('#icon' + pageid).css({
+		$('#icon' + pageidForMenu).css({
 			'-webkit-filter': 'invert(0%)'
 		});
 		$('.menuTitle').css({
 			color: 'white'
 		});
-		$('#menu' + pageid).find('p').css({
+		$('#menu' + pageidForMenu).find('p').css({
 			color: 'black'
 		});
 		// RESET
 		$('.menu').removeClass().addClass('menu');
-		$('#menu' + pageid).addClass('menuSelected');
+		$('#menu' + pageidForMenu).addClass('menuSelected');
 	}
 	switch (pageid) {
 		case 'pOffline':
@@ -420,6 +423,7 @@ motf.bindEvent = function(id) {
 		case 'pUGCPoetDetail':
 			// bind back
 			$('.UGCPoemDetailBack').on('tap', function() {
+				console.log('tap on UGC detail back btn');
 				self.goToPage('pMapAfterUGCPoetDetail');
 			});
 			break;

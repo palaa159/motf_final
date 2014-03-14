@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="org.motf" version="3.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Hello Cordova</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="DisallowOverscroll" value="false" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="TopActivityIndicator" value="gray" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+    <feature name="LocalStorage">
+        <param name="ios-package" value="CDVLocalStorage" />
+    </feature>
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <name>Memories of the Future</name>
+    <description>
+        Memories of the Future
+    </description>
+    <author email="melanie.crean@gmail.com" href="http://melaniecrean.com">
+        Melanie Crean
+    </author>
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="target-device" value="phone" />
+    <preference name="orientation" value="portrait" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="WebViewBounce" value="true" />
+    <preference name="SuppressesIncrementalRendering" value="true" />
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+        <param name="onload" value="true" />
+        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+    </feature>
+    <icon src="icon/icon.png" />
+    <icon cdv:density="ldpi" cdv:platform="android" src="res/icon/android/icon-36-ldpi.png" />
+    <icon cdv:density="mdpi" cdv:platform="android" src="res/icon/android/icon-48-mdpi.png" />
+    <icon cdv:density="hdpi" cdv:platform="android" src="res/icon/android/icon-72-hdpi.png" />
+    <icon cdv:density="xhdpi" cdv:platform="android" src="res/icon/android/icon-96-xhdpi.png" />
+    <cdv:splash cdv:density="ldpi" cdv:platform="android" src="res/screen/android/screen-ldpi-portrait.png" />
+    <cdv:splash cdv:density="mdpi" cdv:platform="android" src="res/screen/android/screen-mdpi-portrait.png" />
+    <cdv:splash cdv:density="hdpi" cdv:platform="android" src="res/screen/android/screen-hdpi-portrait.png" />
+    <cdv:splash cdv:density="xhdpi" cdv:platform="android" src="res/screen/android/screen-xhdpi-portrait.png" />
+    <content src="index.html" />
+    <access origin="*" />
+</widget>

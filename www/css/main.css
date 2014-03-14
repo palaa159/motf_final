@@ -1,0 +1,506 @@
+/*COLORS*/
+@font-face {
+  font-family: GothamXLight;
+  src: url("fonts/Gotham-XLight.ttf"); }
+
+@font-face {
+  font-family: GothamLight;
+  src: url("fonts/Gotham-Light.ttf"); }
+
+@font-face {
+  font-family: GothamBook;
+  src: url("fonts/Gotham-Book.ttf"); }
+
+/*GLOBAL*/
+* {
+  -webkit-touch-callout: none;
+  /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;
+  /* prevent webkit from resizing text to fit */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+  -webkit-user-select: none;
+  /* prevent copy paste, to allow, change 'none' to 'text' */ }
+
+textarea {
+  -webkit-user-select: auto !important; }
+
+input[type="text"], textarea {
+  -webkit-user-select: text; }
+
+html, body {
+  height: 100%; }
+
+li {
+  list-style: none; }
+
+.appContainer {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #cf303c; }
+
+.ios7 {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  width: 100%;
+  height: 100%; }
+
+.page {
+  /* SCROLLABLE */
+  position: absolute;
+  overflow: auto;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  background: #cf303c;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cf303c), color-stop(81%, #d74a37), color-stop(100%, #d74a37));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf303c', endColorstr='#d74a37',GradientType=0 );
+  /* IE6-9 */
+  font-size: 15px;
+  font-family: GothamLight;
+  color: #ebebeb;
+  display: none; }
+
+.pageContent {
+  width: auto;
+  padding: 100px 0px 70px 0px; }
+
+.pInfo p {
+  line-height: 1.2em; }
+
+header {
+  font-family: GothamLight;
+  font-size: 15px !important;
+  color: #fff;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 44px;
+  width: 100%;
+  background: #cf303c;
+  z-index: 10; }
+
+#ytplayer {
+  position: absolute;
+  top: 41px;
+  left: 0px; }
+
+.infoVideoContainer {
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 28%;
+  text-align: center; }
+
+#ytplayerInfo {
+  position: absolute;
+  top: 0px;
+  left: 0px; }
+
+#offlineMessage {
+  box-sizing: border-box;
+  font-size: 0.9em;
+  width: 250px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.9);
+  color: black;
+  border-radius: 25px;
+  padding: 20px;
+  display: none; }
+
+.poemDetailBack, .ugcBack, .UGCPoemDetailBack {
+  position: absolute;
+  width: 80px;
+  height: 35px;
+  bottom: 5px;
+  left: 0px;
+  background-image: url("../img/nav/back-18.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: 10% 50% !important; }
+  .poemDetailBack p, .ugcBack p, .UGCPoemDetailBack p {
+    margin-top: 12px;
+    margin-left: 30px; }
+
+.prevNext {
+  position: absolute;
+  width: 170px;
+  height: 35px;
+  bottom: 5px;
+  right: 0px; }
+  .prevNext p {
+    margin-top: 12px;
+    margin-left: 30px; }
+  .prevNext .poemDetailPrev {
+    display: inline-block;
+    width: 80px;
+    background-image: url("../img/nav/prev-18.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: 0px 40%; }
+  .prevNext .poemDetailNext {
+    display: inline-block;
+    width: 80px;
+    background-image: url("../img/nav/next-18.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: 0px 40%; }
+
+footer {
+  display: none;
+  position: fixed;
+  bottom: 0px;
+  height: 56px;
+  z-index: 10;
+  border-top: 2px solid #d2433e;
+  width: 100%; }
+
+footer > div {
+  display: inline-block;
+  overflow: hidden; }
+  footer > div .footerIcon {
+    vertical-align: -webkit-baseline-middle;
+    margin-top: 8px;
+    height: 20%; }
+
+.menu:first-child {
+  border: none; }
+
+.menu {
+  position: absolute;
+  height: 100px;
+  text-align: center;
+  background: #d3463e;
+  border-left: 1px solid #dddddd;
+  font-family: GothamLight; }
+
+.menuSelected {
+  font-family: GothamBook;
+  background: #fff; }
+
+.menuTitle {
+  margin-top: 5px; }
+
+#fetching {
+  width: 300px;
+  height: 75px;
+  text-align: center;
+  background: white;
+  color: #000;
+  padding-top: 15px;
+  border-radius: 10px;
+  font-family: GothamBook; }
+
+#listView {
+  width: 100%; }
+
+.listNode {
+  height: 150px;
+  background-size: cover !important; }
+  .listNode .listNodeDetail {
+    height: 70px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.25); }
+    .listNode .listNodeDetail .listNodeSeq {
+      font-size: 24px;
+      float: left;
+      margin: 0px 0px 5px 10px;
+      min-width: 40px;
+      max-width: 40px; }
+    .listNode .listNodeDetail .listNodeAuthor {
+      font-size: 24px;
+      margin: 0px 0px 3px 0px;
+      font-family: GothamBook; }
+    .listNode .listNodeDetail .listNodeTitle {
+      font-family: GothamBook;
+      margin: 0px 0px 5px 50px; }
+    .listNode .listNodeDetail .listNodeAddress {
+      font-family: GothamBook;
+      margin: 0px 0px 5px 50px; }
+
+#detailNodeVideo {
+  text-align: center;
+  padding-top: 28%;
+  background: #000;
+  box-sizing: border-box; }
+
+#detailSeqNum {
+  font-size: 24px;
+  padding-top: 14px;
+  margin-left: 9px;
+  text-align: center;
+  line-height: 25.5px;
+  float: left; }
+
+#detailNodeDesc {
+  font-size: 24px;
+  padding-top: 14px;
+  padding-bottom: 5px;
+  border-bottom: 1pt solid white;
+  text-align: left;
+  margin-left: 45px;
+  margin-right: 0px; }
+
+#detailNodeTitle {
+  font-size: 15px;
+  border-bottom: 1pt solid white;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-align: left;
+  margin-left: 45px;
+  margin-right: 0px; }
+
+#detailNodeAddress {
+  text-align: left;
+  font-size: 15px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+  margin-bottom: 0px;
+  text-align: left;
+  margin-left: 45px;
+  margin-right: 0px;
+  line-height: 1.25em; }
+
+#detailNodeMap {
+  overflow: hidden !important;
+  margin-top: 15px;
+  height: 130px;
+  border-radius: 0px; }
+
+.accordion {
+  margin: 10px 15px;
+  width: calc(100% - 30px); }
+  .accordion .readPoem {
+    height: 42px;
+    border: 1px solid white;
+    border-radius: 25px;
+    line-height: 2.5em;
+    font-size: 1.2em;
+    padding-left: 15px;
+    font-family: GothamBook;
+    transition: 0.2s; }
+  .accordion .poem {
+    background: white;
+    color: black;
+    padding: 15px;
+    border: 1px solid white;
+    line-height: 1.2em;
+    display: none; }
+
+.readPoemOn {
+  border-top-left-radius: 25px !important;
+  border-top-right-radius: 25px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important; }
+
+#map, #ugcMap {
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  height: 100% !important; }
+
+#clientLocate {
+  display: none;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  z-index: 2;
+  background: white;
+  border-radius: 5px;
+  bottom: 73px;
+  right: 15px;
+  box-sizing: border-box;
+  padding: 9px; }
+  #clientLocate img {
+    opacity: 0.7; }
+
+#crosshair {
+  background-image: url("../img/map/new_pin.png") !important;
+  background-repeat: no-repeat !important;
+  width: 36px;
+  height: 36px; }
+
+#ugcMapTitle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  text-align: center;
+  background: #cf303c;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cf303c), color-stop(81%, #d74a37), color-stop(100%, #d74a37));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf303c', endColorstr='#d74a37',GradientType=0 );
+  /* IE6-9 */
+  box-shadow: 0px 1px 5px #727272;
+  width: 100%; }
+  #ugcMapTitle h3 {
+    margin: 20px 0px 0px 0px; }
+  #ugcMapTitle h4 {
+    font-size: 14px;
+    margin: 0px 0px 5px 0px;
+    line-height: 1.3em;
+    font-family: GothamLight;
+    padding: 10px; }
+
+.headerContent {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  font-family: GothamBook;
+  font-size: 1.2em;
+  bottom: 13px; }
+
+#ugcAddPoem {
+  display: none;
+  position: fixed;
+  left: 0px;
+  bottom: 55px;
+  z-index: 2;
+  text-align: center;
+  background: #cf303c;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cf303c), color-stop(81%, #d74a37), color-stop(100%, #d74a37));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #cf303c 0%, #d74a37 81%, #d74a37 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf303c', endColorstr='#d74a37',GradientType=0 );
+  /* IE6-9 */
+  width: 100%;
+  height: 65px; }
+  #ugcAddPoem #ugcAddPoemBtn {
+    margin-top: 12px;
+    box-sizing: border-box;
+    width: 180px;
+    border: 1px solid white;
+    border-radius: 25px;
+    height: 40px;
+    padding: 12px; }
+  #ugcAddPoem #ugcAddPoemBtn:active {
+    background: #fff;
+    color: #d2433e; }
+
+.leaflet-control-attribution {
+  display: none; }
+
+.leaflet-popup-close-button {
+  display: none; }
+
+.contextualView {
+  font-weight: bold;
+  font-size: 1.15em;
+  padding-right: 15px; }
+
+#chevron {
+  min-width: 8px !important;
+  min-height: 13px !important;
+  float: right !important;
+  background: url(../img/map/chevron-right.svg) no-repeat 50% 80% !important;
+  height: 50%;
+  position: absolute;
+  right: 9px; }
+
+.pDetailCreate .pageContent {
+  padding: 15px; }
+.pDetailCreate h4 {
+  font-size: 0.9em;
+  line-height: 1.3em; }
+.pDetailCreate input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 5px 5px 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  line-height: 25px !important; }
+.pDetailCreate textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 0px 8px 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  line-height: 20px !important; }
+.pDetailCreate #ugcCreateBtnContainer {
+  position: absolute;
+  width: 100%;
+  bottom: 70px;
+  left: 0px; }
+  .pDetailCreate #ugcCreateBtnContainer #ugcCreateBtn {
+    position: fixed;
+    bottom: 70px;
+    left: calc(50% - 90px);
+    text-align: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 180px;
+    border: 1px solid white;
+    border-radius: 25px;
+    height: 40px;
+    padding: 12px; }
+  .pDetailCreate #ugcCreateBtnContainer #ugcCreateBtn:active {
+    color: #d2433e;
+    background: white; }
+
+.pUGCPoetDetail .pageContent {
+  padding: 15px 15px 70px 15px;
+  overflow: auto; }
+
+#p_ugcContent {
+  line-height: 1.4em;
+  font-size: GothamXLight; }
+
+#submitCover {
+  color: #000;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.8);
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0; }
+  #submitCover .submitCoverContainer {
+    text-align: center;
+    width: 300px;
+    height: 200px; }
+
+.hidden {
+  display: none; }
+
+/*END OF GLOBAL*/

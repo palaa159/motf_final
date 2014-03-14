@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <title>motfApp 3.5</title>
+        <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
+        <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+        <link rel="stylesheet" type="text/css" href="css/leaflet.label.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+    <body>
+        <div class="appContainer">
+            <div id="submitCover">
+                <div class="submitCoverContainer">
+                    <img alt="alt" class="loaderGif" src="css/images/ajax-loader.gif">
+                    <h3>Submitting your poem...</h3>
+                    <h4>Thank you for your participation</h4>
+                </div>
+            </div>
+            <!-- FIXED FOOTER -->
+            <footer id="appFooter">
+                <div class="menu" id="menupPoets" title="pPoets">
+                    <img alt="alt" class="footerIcon" id="iconpPoets" src="img/footer/poets.png" data-src2x="img/footer/poets.png">
+                    <p class="menuTitle">Poets</p>
+                </div>
+                <div class="menu" id="menupMap" title="pMap">
+                    <img alt="alt" class="footerIcon" id="iconpMap" src="img/footer/map.png" data-src2x="img/footer/map.png">
+                    <p class="menuTitle">Map</p>
+                </div>
+                <div class="menu" id="menupCreate" title="pCreate">
+                    <img alt="alt" class="footerIcon" id="iconpCreate" src="img/footer/create.png" data-src2x="img/footer/create.png">
+                    <p class="menuTitle">Create</p>
+                </div>
+                <div class="menu" id="menupInfo" title="pInfo">
+                    <img alt="alt" class="footerIcon" id="iconpInfo" src="img/footer/info.png" data-src2x="img/footer/info.png">
+                    <p class="menuTitle">Info</p>
+                </div>
+            </footer>
+            <div class="sectionContainer">
+            </div>
+        </div>
+        <!-- Handlebars templates -->
+        <script id="tempLanding" type="text/x-handlebars-template">
+            <div id="fetching">
+                <img alt="alt" class="loaderGif" src="css/images/ajax-loader.gif">
+                <h5>{{loadText}}</h5>
+            </div>
+        </script>
+        <script id="tempOffline" type="text/x-handlebars-template">
+            <div id="offlineMessage">
+                <center>
+                Cannot connect to the Memories of the Future servers.<br/><br/>
+                Please check your internet connection and try again.
+                </center>
+            </div>
+        </script>
+        <script id="tempPoet" type="text/x-handlebars-template">
+            <div id="listView" style="padding-bottom: 50px;">
+                {{#each this}}
+                <li class="listNode" style="background:url(img/poetImg/poet_{{ID}}.jpg)">
+                    <div class="listNodeDetail">
+                        {{#compare ID "<" 10}}<p class="listNodeSeq">0{{ID}}</p>{{/compare}}
+                        {{#compare ID ">=" 10}}<p class="listNodeSeq">{{ID}}</p>{{/compare}}
+                        <p class="listNodeAuthor">{{author}}</p>
+                        <p class="listNodeTitle">{{name}}</p>
+                        <p class="listNodeAddress">{{address}}</p>
+                    </div>
+                </li>
+                {{/each}}
+            </div>
+        </script>
+        <script id="tempPoetDetail" type="text/x-handlebars-template">
+            <header>
+                <div class="poemDetailBack">
+                    <p>Back</p>
+                </div>
+                <section class="prevNext">
+                    <div class="poemDetailPrev">
+                        <p>Prev</p>
+                    </div>
+                    <div class="poemDetailNext">
+                        <p>Next</p>
+                    </div>
+                </section>
+            </header>
+            <div class="pageContent" style="padding-top: 42px;">
+                <div id="detailNodeVideo" style="width:{{size.width}}px; height:{{size.height}}px">
+                    Loading video content...
+                    <iframe id="ytplayer" type="text/html" width="{{size.width}}" height="{{size.height}}" src="http://www.youtube.com/embed/{{url}}?controls=0&rel=0&showinfo=0&modestbranding=1" allowfullscreen frameborder="0"></iframe>
+                </div>
+                <div id="detailContainer">
+                    <div id="detailCircle">
+                        {{#compare ID "<" 10}}<div id="detailSeqNum">0{{ID}}</p>{{/compare}}
+                        {{#compare ID ">=" 10}}<div id="detailSeqNum">{{ID}}</p>{{/compare}}
+                    </div>
+                    <div id="detailNodeDesc">{{author}}</div>
+                </div>
+                <div id="detailNodeTitle">{{name}}</div>
+                <div id="detailNodeAddress">{{address}}</div>
+                <!-- ACCORDION -->
+                <div class="accordion">
+                    <div class="readPoem">+ Read poem</div>
+                    <div class="poem">{{{poem}}}</div>
+                </div>
+                <div id="detailNodeMap"></div>
+            </div>
+        </script>
+
+        <script id="tempMap" type="text/x-handlebars-template">
+            <div id="map"></div>
+            <div id="clientLocate">
+                <img alt="alt" src="img/map/locate.png" width="100%" height="100%">
+            </div>
+        </script>
+
+        <script id="tempUGCPoetDetail" type="text/x-handlebars-template">
+            <header>
+                <div class="headerContent">Poem</div>
+                <div class="UGCPoemDetailBack">
+                    <p>Back</p>
+                </div>
+            </header>
+            <div class="pageContent" style="padding-top: 42px;">
+                <p></p>
+                <span id="p_ugcTitle">{{title}} by </span>
+                {{#if author}}
+                <span id="p_ugcAuthor">{{author}}</span>
+                {{else}}
+                <span id="p_ugcAuthor">Anonymous</span>
+                {{/if}}
+                <p id="p_ugcContent">{{content}}</p>
+            </div>
+        </script>
+
+        <script id="tempCreate" type="text/x-handlebars-template">
+            <div id="ugcMap"></div>
+            <div id="crosshair"></div>
+            <div id="ugcMapTitle">
+                <h3>TELL YOUR STORY</h3>
+                <h4>
+                Contribute your own poetry about Hunts Point. Set your poem's location by scrolling the map below, then enter your words on the next page.
+                </h4>
+            </div>
+            <div id="ugcAddPoem">
+                <center>
+                <div id="ugcAddPoemBtn">Set location</div>
+                </center>
+            </div>
+        </script>
+
+        <script id="tempDetailCreate" type="text/x-handlebars-template">
+            <header>
+                <div class="ugcBack">
+                    <p>Back</p>
+                </div>
+            </header>
+            <div class="pageContent" style="padding-top: 42px;">
+                <h4>Please add your memories, stories, poetry and visions of the future for this location.</h4>
+                <input type="text" id="ugcAuthor" placeholder="Your name (Optional)">
+                <input type="text" id="ugcTitle" placeholder="Title">
+                <textarea rows="5" id="ugcContent" placeholder="Enter poem"></textarea>
+                <div id="ugcCreateBtnContainer">
+                    <div id="ugcCreateBtn">Create</div>
+                </div>
+            </div>
+        </script>
+
+        <script id="tempInfo" type="text/x-handlebars-template">
+            <div class="pageContent" style="padding-top: 20px; padding-left: 15px; padding-right: 15px;">
+                <img src="img/header_about.png" width="100%">
+                <p>
+                Memories of the Future is a location-based cinema project created in the Hunts Point neighborhood of the South Bronx, that explores how the built environment has affected the lives of those living there. The story uses memories of past experiences to reflect on the nature of current issues the community faces, and to re-imagine potential futures.
+                </p>
+                <div class="infoVideoContainer" style="width:{{width}}px; height:{{height}}px; background: black;">
+                Loading video content...
+                <iframe id="ytplayerInfo" type="text/html" width="{{width}}" height="{{height}}" src="http://www.youtube.com/embed/{{url}}?controls=0&rel=0&showinfo=0&modestbranding=1" allowfullscreen frameborder="0"></iframe>
+                </div>
+                <p>
+                <p>
+                Sixteen spoken word poets, writing from the point of view of different locations throughout Hunts Point, speak as interpreters, testifying on behalf of the locations themselves. Together they weave a spatial narrative that forms the basis of this mobile application, beginning at the Hunts Point train station with a view of the past, and ending at Bronx River with a look toward the future.
+                </p>
+                <p>
+                The location-aware mobile application allows each video vignette in the collectively written story to be viewed in the particular location on which it is based, where it was ultimately filmed.  Subtle visual effects in the videos alter the landscape, facilitating the viewer standing in that location to see it anew.
+                </p>
+                <p>
+                The project explores how communities can discuss and express the potential for transcending issues of urban spatial injustice. If urban landscapes are monuments to time, etched with memory, then certainly they can be read, and if necessary, re-written, to project their texts into the future.
+                </p>
+                <h2>CREDITS</h2>
+                <p>Creator and Director:<br>Melanie Crean</p>
+                <p>Producer:<br>Jordan Parnass</p>
+                <p>Visual Effects and Compositing:<br>Enrique Maitland</p>
+                <p>Technical Director:<br>Dimitri Stancioff<p>
+                <p>App Developers:<br>Jane Friedhoff<br>Apon Palanuwech</p>
+                <p>Research, Casting & Production Support:<br> Melissa Lomba, Majora Carter Group LLC</p>
+                <h2>LICENSE</h2>
+                <p>
+                <img alt="Creative Commons License" style="border-width:0" src="img/cc88x31.png">
+                <br>
+                <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Memories of the Future</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Melanie Crean</span> is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+                </p>
+            </div>
+        </script>
+
+        <!-- libraries -->
+        <script src="cordova.js"></script>
+        <script src="js/vendor/leaflet.js"></script>
+        <script src="js/vendor/leaflet.label.js"></script>
+        <script src="js/vendor/underscore.min.js"></script>
+        <script src="js/vendor/parse.min.js"></script>
+        <script src="js/vendor/jquery.min.js"></script>
+        <script src="js/vendor/fastclick.min.js"></script>
+        <script src="js/vendor/jquery.animate-enhanced.js"></script>
+        <script src="js/vendor/handlebars.min.js"></script>
+        <script src="js/functions.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

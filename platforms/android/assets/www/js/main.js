@@ -47,6 +47,7 @@ motf.deployPoet = function(poetnum) {
 
 motf.deployUGC = function(poetnum) {
 	var template = Handlebars.compile($('#tempUGCPoetDetail').html());
+	self.UGCData[poetnum].content = replaceAll('\n', '<br>', self.UGCData[poetnum].content);
 	return template(self.UGCData[poetnum]);
 };
 
@@ -117,7 +118,7 @@ motf.goToPage = function(pageid) {
 		case 'pLanding':
 			var landing = Handlebars.compile($('#tempLanding').html()),
 				data = {
-					loadText: 'Retrieveing data...'
+					loadText: 'Retrieving data...'
 				};
 			return this.createPage('pLanding', landing(data));
 		case 'pPoets':
@@ -207,9 +208,10 @@ motf.bindEvent = function(id) {
 			centerEl('#offlineMessage');
 			$('#offlineMessage').show();
 			$('footer').hide();
-			looper = widow.setInterval(function() {
+			looper = setInterval(function() {
 				$.ajax({
 					url: 'http://fiddle.jshell.net/favicon.png',
+					dataType: 'jsonp',
 					success: function(data) {
 						self.goToPage('pLanding');
 					}, error: function() {
@@ -447,7 +449,7 @@ motf.unbindAllListeners = function() {
 	UGCMapView.map = null;
 	$('#submitCover').hide();
 	$('header').remove();
-	window.clearInterval(looper);
+	clearInterval(looper);
 };
 
 

@@ -35,12 +35,9 @@ $detail-font-size-med:15px;
     // outline: none;
 }
 
-textarea {
-    -webkit-user-select: auto !important;
-}
-
 input[type="text"], textarea {
-    -webkit-user-select: text;
+    -webkit-user-select: auto !important;
+    -webkit-touch-callout: auto !important;
 }
 
 html, body {
@@ -79,13 +76,13 @@ li {
 	// transition: 0.8s;
 	-webkit-overflow-scrolling: touch;
 	background: #cf303c; /* Old browsers */
-	background: -moz-linear-gradient(top,  #cf303c 0%, #d74a37 81%, #d74a37 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cf303c), color-stop(81%,#d74a37), color-stop(100%,#d74a37)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #cf303c 0%,#d74a37 81%,#d74a37 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #cf303c 0%,#d74a37 81%,#d74a37 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #cf303c 0%,#d74a37 81%,#d74a37 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #cf303c 0%,#d74a37 81%,#d74a37 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf303c', endColorstr='#d74a37',GradientType=0 ); /* IE6-9 */
+	background: -moz-linear-gradient(top,  #cf303c 0%, #d74a37 50%, #eb7e25 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eb7e25), color-stop(50%,#d74a37), color-stop(100%,#eb7e25)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #cf303c 0%,#d74a37 50%,#eb7e25 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #cf303c 0%,#d74a37 50%,#eb7e25 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #cf303c 0%,#d74a37 50%,#eb7e25 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #cf303c 0%,#d74a37 50%,#eb7e25 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf303c', endColorstr='#eb7e25',GradientType=0 ); /* IE6-9 */
 	font-size:15px;
 	font-family:$inactive-font;
 	color:#ebebeb;
@@ -126,6 +123,7 @@ header {
 	position: relative;
 	padding-top: 28%;
 	text-align: center;
+	margin: 0 auto;
 }
 
 #ytplayerInfo {
@@ -201,8 +199,10 @@ footer > div {
 	overflow: hidden;
 	.footerIcon {
 		vertical-align: -webkit-baseline-middle;
+		-webkit-transform: translateZ(0);
 		margin-top: 8px;
 		height: 20%;
+		width: auto;
 	}
 }
 
@@ -389,7 +389,6 @@ footer > div {
 #crosshair {
 	background-image:url("../img/map/new_pin.png") !important;
 	background-repeat:no-repeat !important; 
-	// background-position:50% 50% !important;
 	width:36px;
 	height:36px;
 }

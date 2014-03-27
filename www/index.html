@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-        <title>motfApp 3.5</title>
+        <title>motfApp 3.0.5</title>
         <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
         <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
         <link rel="stylesheet" type="text/css" href="css/leaflet.label.css" />
@@ -22,19 +22,19 @@
             <!-- FIXED FOOTER -->
             <footer id="appFooter">
                 <div class="menu" id="menupPoets" title="pPoets">
-                    <img alt="alt" class="footerIcon" id="iconpPoets" src="img/footer/poets.png" data-src2x="img/footer/poets.png">
+                    <img alt="alt" class="footerIcon" id="iconpPoets" src="img/footer/poets.png" data-src2x="img/footer/poets@2x.png" width="36" height="36">
                     <p class="menuTitle">Poets</p>
                 </div>
                 <div class="menu" id="menupMap" title="pMap">
-                    <img alt="alt" class="footerIcon" id="iconpMap" src="img/footer/map.png" data-src2x="img/footer/map.png">
+                    <img alt="alt" class="footerIcon" id="iconpMap" src="img/footer/map.png" data-src2x="img/footer/map@2x.png" width="36" height="36">
                     <p class="menuTitle">Map</p>
                 </div>
                 <div class="menu" id="menupCreate" title="pCreate">
-                    <img alt="alt" class="footerIcon" id="iconpCreate" src="img/footer/create.png" data-src2x="img/footer/create.png">
+                    <img alt="alt" class="footerIcon" id="iconpCreate" src="img/footer/create.png" data-src2x="img/footer/create@2x.png" width="36" height="36">
                     <p class="menuTitle">Create</p>
                 </div>
                 <div class="menu" id="menupInfo" title="pInfo">
-                    <img alt="alt" class="footerIcon" id="iconpInfo" src="img/footer/info.png" data-src2x="img/footer/info.png">
+                    <img alt="alt" class="footerIcon" id="iconpInfo" src="img/footer/info.png" data-src2x="img/footer/info@2x.png" width="36" height="36">
                     <p class="menuTitle">Info</p>
                 </div>
             </footer>
@@ -130,7 +130,7 @@
                 {{else}}
                 <span id="p_ugcAuthor">Anonymous</span>
                 {{/if}}
-                <p id="p_ugcContent">{{content}}</p>
+                <p id="p_ugcContent">{{{content}}}</p>
             </div>
         </script>
 
@@ -173,10 +173,12 @@
                 <p>
                 Memories of the Future is a location-based cinema project created in the Hunts Point neighborhood of the South Bronx, that explores how the built environment has affected the lives of those living there. The story uses memories of past experiences to reflect on the nature of current issues the community faces, and to re-imagine potential futures.
                 </p>
+                <center>
                 <div class="infoVideoContainer" style="width:{{width}}px; height:{{height}}px; background: black;">
                 Loading video content...
                 <iframe id="ytplayerInfo" type="text/html" width="{{width}}" height="{{height}}" src="http://www.youtube.com/embed/{{url}}?controls=0&rel=0&showinfo=0&modestbranding=1" allowfullscreen frameborder="0"></iframe>
                 </div>
+                </center>
                 <p>
                 <p>
                 Sixteen spoken word poets, writing from the point of view of different locations throughout Hunts Point, speak as interpreters, testifying on behalf of the locations themselves. Together they weave a spatial narrative that forms the basis of this mobile application, beginning at the Hunts Point train station with a view of the past, and ending at Bronx River with a look toward the future.
